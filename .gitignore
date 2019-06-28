@@ -1,0 +1,58 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Logs/
+/Library/
+.vs/
+.idea/
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Assets/UnityVS/
+Assets/UnityVS.meta
+Assets/StreamingAssets/
+# ============ #
+# User Specify #
+# ============ #
+Assets/Plugins/Sirenix/Assemblies/AOT/
+Assets/bolt/assemblies/
+CF2.config
+# Assembly-CSharp.csproj.DotSettings #
+JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll
+ProjectSettings/ProjectVersion.txt
+Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta
+
+build/
+ProjectSettings/UnityConnectSettings.asset
+sysinfo.txt
+*.apk
+*.unitypackage
+Assets/Generated/Source.meta
+Assets/Generated/Source/**/*.*
+
+Assets/Plugins/Editor/
+Assets/Plugins/Editor.meta
+

@@ -1,0 +1,19 @@
+{
+    "name": "UniRx.Examples",
+    "references": [
+        "UniRx",
+        "UniRx.Async",
+        "NaughtyAttributes.Core"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
