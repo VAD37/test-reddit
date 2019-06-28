@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6755b26fa0c66a45a50f8a688fd5065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appId: 56Y3i0_w5IpckA
-  appSecret: 0TR2G7x05JElmj-rpRd69ZZgcpA
+  appId: A3KES3pqsn9Ctw
+  appSecret: 3obD1OtkpjfNmcXSRQX_XD6mnOs
   header:
   - key: client_id
     value: A3KES3pqsn9Ctw
@@ -352,3 +352,5 @@ MonoBehaviour:
     value: temporary
   - key: scope
     value: edit
+  AccessToken: 214252035530-xdxsHYnXc4ZnWRGJ3Sk6P8hUJUk
+  subreddit: 
