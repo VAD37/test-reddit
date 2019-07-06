@@ -49,7 +49,12 @@ namespace UniRx.WebRequest
             IDictionary<string, string> headers = null, IProgress<float> progress = null)
         {
             return ObservableUnity.FromCoroutine<string>((observer, cancellation) => FetchText(UnityWebRequest.Post(url, postData), headers, observer, progress, cancellation)); 
-
+        }
+        
+        public static IObservable<string> Post(string                      url,            string postData,
+                                               IDictionary<string, string> headers = null, IProgress<float>           progress = null)
+        {
+            return ObservableUnity.FromCoroutine<string>((observer, cancellation) => FetchText(UnityWebRequest.Post(url, postData), headers, observer, progress, cancellation)); 
         }
 
         public static IObservable<byte[]> PostAndGetBytes(string url, Dictionary<string, string> postData, IProgress<float> progress = null)
@@ -66,12 +71,23 @@ namespace UniRx.WebRequest
         {
             return ObservableUnity.FromCoroutine<UnityWebRequest>((observer, cancellation) => Fetch(UnityWebRequest.Post(url, postData), null, observer, progress, cancellation));
         }
+        
+        public static IObservable<UnityWebRequest> PostRequest(string url, string postData, IProgress<float> progress = 
+        null)
+        {
+            return ObservableUnity.FromCoroutine<UnityWebRequest>((observer, cancellation) => Fetch(UnityWebRequest.Post(url, postData), null, observer, progress, cancellation));
+        }
 
         public static IObservable<UnityWebRequest> PostRequest(string url, Dictionary<string, string> postData, IDictionary<string, string> headers , IProgress<float> progress = null)
         {
             return ObservableUnity.FromCoroutine<UnityWebRequest>((observer, cancellation) => Fetch(UnityWebRequest.Post(url, postData), headers, observer, progress, cancellation));
         }
 
+        public static IObservable<UnityWebRequest> PostRequest(string url, string postData, IDictionary<string, string> 
+        headers , IProgress<float> progress = null)
+        {
+            return ObservableUnity.FromCoroutine<UnityWebRequest>((observer, cancellation) => Fetch(UnityWebRequest.Post(url, postData), headers, observer, progress, cancellation));
+        }
 
         public static IObservable<AssetBundle> LoadFromCacheOrDownload(string url, uint version, uint crc, IProgress<float> progress = null)
         {

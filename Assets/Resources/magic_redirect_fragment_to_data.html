@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<p id="url"></p>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+    function loadFunction() {
+        var url = document.URL;
+        var unique =  "/?%2F=#";
+        //URL look like this. http cannot read fragment after # so it must be changed to GET/
+        //http://localhost:21345/?%2F=#access_token=214252035530-_IlMxVtrvwFsPPRSgBmvvGjC_68&token_type=bearer&state=e63f98ad-be2e-4eaa-bd24-cf6f3b5141cd&expires_in=3600&scope=edit+history+identity+modposts+mysubreddits+read+save+submit
+        if (url.includes(unique)) {
+            url = url.replace(unique, "/");
+            document.getElementById("url").innerHTML = url;
+            window.location.replace(url);
+        }
+        else
+        {
+            document.getElementById("url").innerHTML = "This browser tab suppose to be auto close.";
+            //close tab
+            window.open('','_parent','');
+            window.close();
+        }
+    }
+
+    window.onload = loadFunction;
+</script>
+</body>
+</html>

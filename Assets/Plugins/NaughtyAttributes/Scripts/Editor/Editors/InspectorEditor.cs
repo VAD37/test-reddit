@@ -24,7 +24,7 @@ namespace NaughtyAttributes.Editor
 
         private bool useDefaultInspector;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             this.script = this.serializedObject.FindProperty("m_Script");
 
