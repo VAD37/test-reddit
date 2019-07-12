@@ -10,11 +10,11 @@ using Debug = UnityEngine.Debug;
 
 public class RedditAuthorization : MonoBehaviour
 {
-    public HeadersDictionary headers = new HeadersDictionary() {
-        {"client_id", "pKkVQjJwzk7Jrg"},
+    public HeadersDictionary headersSettings = new HeadersDictionary() {
+        {"client_id", "pKkVQjJwzk7Jrg"}, //installed app ID
         {"response_type", "token"},
         {"state", ""},
-        {"redirect_uri", "http://localhost:21345/?/"},
+        {"redirect_uri", "http://localhost:21345/?/"}, //do not change this address
         {"duration", "temporary"},
         {"scope", "identity,edit,read,save,submit,modposts,mysubreddits,history"},
     };
@@ -40,11 +40,11 @@ public class RedditAuthorization : MonoBehaviour
         //Randomize state and change url to port you want.
         ConfigureStateAndRedirectUri();
 
-        OpenBrowserForRedditAuth(headers);
+        OpenBrowserForRedditAuth(headersSettings);
 
         var result  = await StartListeningForResponse();
         var uriData = result.GetHeadersFromUriData();
-        if (uriData == null) return;
+        //if (uriData == null) return;
         if (uriData.Contains("error")) Debug.LogError(uriData["error"]);
         
         AccessToken = uriData["access_token"];
@@ -54,10 +54,11 @@ public class RedditAuthorization : MonoBehaviour
             HttpListener listener = new HttpListener();
             listener.Prefixes.Add($"http://localhost:{listeningPort}/");
             listener.Start();
-            //Hard code file
-            string responseString = Resources.Load<TextAsset>("magic_redirect_fragment_to_data").text;
-            byte[] htmlWeb        = Encoding.UTF8.GetBytes(responseString);
-            string text;
+            //HACK: Hard code file. tell browser to open this html file after get token key. So now this html file will tell unity what is token key.
+            // Kinda shitty but it work. All thks to browser security.
+            string textFile = Resources.Load<TextAsset>("magic_redirect_fragment_to_data").text;
+            byte[] htmlWeb        = Encoding.UTF8.GetBytes(textFile);
+            string getValue; // the value after /? in url
             while (true) {
                 var context = await listener.GetContextAsync().ConfigureAwait(false);
                 try {
@@ -75,7 +76,7 @@ public class RedditAuthorization : MonoBehaviour
                         //Debug.Log(request.RawUrl);
                         // Meaning we have a full url : http://localhost:21345/?access_token=token & stuff
                         //RawURL look like: /access_token=214252035530-GKCNDtDglx8_3vYakCPcLYed0Pw&token_type=bearer&state=2a7e89b8-2aad-488a-b59b-97702a94f859&expires_in=3600&scope=edit+history+identity+modposts+mysubreddits+read+save+submit
-                        text = request.RawUrl.Replace("/", ""); // Remove 1st character
+                        getValue = request.RawUrl.Replace("/", ""); // Remove 1st character
                         break;
                     }
                 }
@@ -84,13 +85,13 @@ public class RedditAuthorization : MonoBehaviour
 
             listener.Stop();
             listener.Close();
-            return text;
+            return getValue;
         }
     }
 
     private void ConfigureStateAndRedirectUri() {
-        headers["state"] = Guid.NewGuid().ToString();
-        headers["redirect_uri"] =
+        headersSettings["state"] = Guid.NewGuid().ToString();
+        headersSettings["redirect_uri"] =
             $"http://localhost:{listeningPort.ToString()}/?/"; //HACK IpAddress actually return [::1] and not localhost
     }
 

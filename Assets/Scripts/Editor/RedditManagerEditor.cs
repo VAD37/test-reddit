@@ -6,6 +6,7 @@ namespace Reddit
     [CustomEditor(typeof(RedditManager))]
     public class RedditManagerEditor : InspectorEditor
     {
+        //For quick test authentication in editor or when refresh editor during dev
         protected override void OnEnable() {
             base.OnEnable();
             var reddit = this.target as RedditManager;

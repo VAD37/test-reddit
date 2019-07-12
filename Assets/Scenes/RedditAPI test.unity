@@ -175,12 +175,12 @@ MonoBehaviour:
     m_values:
     - pKkVQjJwzk7Jrg
     - token
-    - 30af6fa9-0522-41a9-aaa4-69b166ae6a98
+    - f4594ced-9b5f-42cf-9c99-1937b392c122
     - http://localhost:21345/?/
     - temporary
     - identity,edit,read,save,submit
   listeningPort: 21345
-  accessToken: 214252035530-HFKHMhxMnP7pP-SH4S8JvopPfnI
+  accessToken: 214252035530-sak6dKoYPsyF7IeO74uPYlk82E0
 --- !u!114 &270257921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   authorization: {fileID: 270257920}
+  redditApi:
+    accessToken: 214252035530-sak6dKoYPsyF7IeO74uPYlk82E0
   user:
     IsEmployee: 0
     SeenLayoutSwitch: 1
